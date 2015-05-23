@@ -7,13 +7,15 @@ class Celular
 	end
 
 	def marca_de_celular x
-		if x == "Apple"
+		#volver la x variable global
+		@x = x
+		if @x == "Apple"
 			puts "Lástima"
 
-		elsif x == "Samsung"
+		elsif @x == "Samsung"
 			puts "Lástima"
 		
-		else x
+		else 
 			puts "no inventar marcas por favor! Apple o Samsung."
 			initialize
 		end	
@@ -21,22 +23,26 @@ class Celular
 	end
 	
 	def color
+		puts "Qué color quiere? Azul o Blanco?"
+		color_de_celular = gets.chomp
+		color_de_celular.to_s
 		case color_de_celular
 		when "Azul"
-			puts "Su celular es #{marca_de_celular} y #{color_de_celular}."
+			puts "Su celular es #{@x} y #{color_de_celular}. Mentiroso ese color no existe para Iphone!"
 		when "Blanco"
-			puts "Su celular es #{marca_de_celular} y #{color_de_celular}."
-		else x
-			puts "No existe ese color para ese celular"
+			puts "Su celular es #{@x} y #{color_de_celular}."
+		else 
+			puts "No existe ese color para ese celular. Tienes que volver a empezar"
 			initialize
 		end
 	end
 
-	def user_number
-		number.to_s
-			case number
+	def user_number h
+		
+			case h.to_s
 			when "3133575494"
-				puts "Este número ya esta asignado"
+				puts "Este número ya esta asignado, tienes que volver a empezar."
+				initialize
 			else
 				puts "Número asignado"
 			end			
@@ -46,10 +52,9 @@ end
 
 a = Celular.new
 
-puts "Qué color quiere? Azul o Blanco?"
-mobile_color = gets.chomp
 
+a.color
 
 puts "Asigne un número a su equipo"
 number = gets.chomp
-a.user_number
+a.user_number number
